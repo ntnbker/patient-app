@@ -3,9 +3,9 @@
 # Name:           PATIENT APP               # 
 # Developer:      Super Heroes Team         #
 # NodeJs version: 7.6.0                     #
-#	npm version:    4.1.2                     #
+# npm version:    4.1.2                     #
 # Version:        1.0                       #
-#	Date:           03-15-2017                #
+# Date:           03-15-2017                #
 #############################################
 
 Please folow step by step:
