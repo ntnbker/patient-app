@@ -1,0 +1,117 @@
+/* ===================== RESET CSS ======================== */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+*, *:after, *:before {
+	box-sizing: border-box;
+}
+
+/* ===================== END RESET CSS ======================== */
+
+@font-face{font-family:
+'ProximaNova-Regular';src:url('../assets/fonts/Proxima-Nova-Regular.otf') format('opentype')}
+@font-face{font-family:
+'ProximaNova-Light';src:url('../assets/fonts/Proxima-Nova-Light.otf') format('opentype')}
+@font-face{font-family:
+'ProximaNova-Bold';src:url('../assets/fonts/Proxima-Nova-Bold.otf') format('opentype')}
+@font-face{font-family:
+'ProximaNova-SemiBold';src:url('../assets/fonts/Proxima-Nova-Semibold.otf') format('opentype')}
+@font-face{font-family:
+'ProximaNova-Thin';src:url('../assets/fonts/Proxima-Nova-Thin.otf') format('opentype')}
+
+body {
+	font-family: "ProximaNova-Regular";
+}
+
+.img-full-width {
+	width: 100%;
+}
+
+.btn-sml {
+	font-family: "ProximaNova-Bold";
+	padding: 0 16px;
+	font-size: 18px;
+	line-height: 28px;
+	border-radius: 4px;
+	box-shadow: 0px 0.5px 0.5px 0px rgba(0, 0, 0, 0.4);
+	color: white;
+	.icon {
+		font-size: 22px;
+		font-weight: bold;
+		vertical-align: text-top;
+		&.icon-right {
+			padding-left: 5px;
+		}
+		&.icon-left {
+			padding-right: 5px;
+		}
+	}
+	&.bg-sml-orange {
+		background: #E47923;
+		border: 1px solid #E47923;
+		&:hover, &:active, &:focus {
+			color: white;
+			background: #C56619;
+			border: 1px solid #C56619;
+		}
+	}
+	&.bg-sml-purple {
+		background: #BF91B3;
+		border: 1px solid #BF91B3;
+		&:hover, &:active, &:focus {
+			color: white;
+			background: #9E7894;
+			border: 1px solid #9E7894;
+		}
+	}
+	&.bg-sml-white {
+		background: white;
+		color: #133644;
+		border: 1px solid #54818E;
+		font-family: "ProximaNova-Light";
+		.icon {
+			font-weight: normal;
+		}
+	}
+}

@@ -1,0 +1,7 @@
+.loginContainer {
+  max-width: 700px;
+  margin: 50px auto; }
+  .loginContainer .btnSwitchAuth {
+    color: black; }
+  .loginContainer .btnAuth {
+    margin: 15px 0; }

@@ -1,0 +1,29 @@
+.app-detail-person {
+  font-size: 13px;
+  width: 75%;
+  margin: 0 auto;
+  padding: 20px 0; }
+  .app-detail-person input, .app-detail-person textarea {
+    outline: none;
+    border: none;
+    box-shadow: none; }
+  .app-detail-person .detail-person-id,
+  .app-detail-person .detail-person-name,
+  .app-detail-person .detail-person-birthday,
+  .app-detail-person .detail-person-birthday,
+  .app-detail-person .detail-person-mediacation,
+  .app-detail-person .detail-person-tags,
+  .app-detail-person .detail-person-adress,
+  .app-detail-person .detail-person-postalcode,
+  .app-detail-person .detail-person-email,
+  .app-detail-person .detail-person-survey {
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    padding: 5px; }
+  .app-detail-person .detail-contact {
+    padding: 20px 0; }
+    .app-detail-person .detail-contact .detail-contact-add {
+      line-height: 50px;
+      color: cyan;
+      border-bottom: 1px solid lightgray;
+      cursor: pointer; }
