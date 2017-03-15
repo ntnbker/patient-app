@@ -5,6 +5,7 @@ import {
 	loadDetailPatient,
 	updateDetailpatient
 } from '../actions/patient'
+import default_avatar from '../../public/avatar_default.jpg'
 class DetailPerson extends Component {
 	constructor(props) {
 		super(props)
@@ -26,8 +27,11 @@ class DetailPerson extends Component {
 			detailPatient
 		} = props
 		if (!detailPatient.gender) detailPatient.gender = 'female'
-		detailPatient.tags = detailPatient.tags && detailPatient.tags.join(',')
+		detailPatient.tags = detailPatient.tags && detailPatient.tags.join(',') || ''
 		if (!detailPatient.plans) detailPatient.plans = {}
+		if (!detailPatient.contacts || !detailPatient.contacts.length) {
+			detailPatient.contacts = [{}]
+		}
 		this.setState({
 			contactsInfo: detailPatient.contacts || [{}],
 			detailPatient: detailPatient,
@@ -40,9 +44,13 @@ class DetailPerson extends Component {
   _handleChangeAvatar(e) {
     e.preventDefault();
 
-    let reader = new FileReader();
     let file = e.target.files[0];
-
+    let fileSize = (file.size/1024).toFixed(4) // KB
+    if (fileSize > 200) {
+    	window.alert('FILE TOO LARGE, PLEASE CHOOSE FILE < 30KB');
+    	return;
+    }
+    let reader = new FileReader();
     reader.onloadend = () => {
       this.setState({
         file: file,
@@ -106,6 +114,11 @@ class DetailPerson extends Component {
 			detailPatient
 		})
 	}
+	
+
+	_handleChooseAvatar() {
+		this.refs.filePicker.click();
+	}
 
 	_handleSavebtn() {
 		let {
@@ -134,21 +147,20 @@ class DetailPerson extends Component {
 			isUploadAvatar
 		} = this.state
 		let birthday = detailPatient.birthday && new Date(detailPatient.birthday);
-		if (!detailPatient.plans) detailPatient.plans = {}
+		if (!detailPatient.plans) detailPatient.plans = ''
 		let date = birthday && 
 				(birthday.getFullYear().toString() + '-' + 
 				(birthday.getMonth() < 9 ? '0' : '') + (birthday.getMonth() + 1) + '-' + 
 				(birthday.getDate() < 10 ? '0' : '') + birthday.getDate())
-		let $avatar = (
-				<img  src={avatarPreview} onclick="document.getElementById('selectedFile').click();" alt="Avatar" className="detail-person-avatar" height="100px" width="100px"/>
-				)
+		
 		return (
 			<div className="app-container">
 				<div className="app-detail-person">
 					<div className="row">
 						<div className="col-sm-2 col-xs-12">
-							{$avatar}
-							<input accept="image/*" type="file" id="filePicker" width="100px" style={{display: "none"}} onChange={this._handleChangeAvatar.bind(this)}/>
+							<img  src={avatarPreview || default_avatar} alt="Avatar" className="detail-person-avatar" height="100px" width="100px"/>
+							<input accept="image/*" type="file" ref="filePicker" width="100px" style={{display: "none"}} onChange={this._handleChangeAvatar.bind(this)}/>
+							<input type="button" value="Browse..." onClick={this._handleChooseAvatar.bind(this)} />
 						</div>
 						<div className="col-sm-10 col-xs-12">
 							<div className="col-sm-6 col-xs-12">

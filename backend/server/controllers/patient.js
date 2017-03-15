@@ -27,19 +27,16 @@ exports.createPatient = function(req, res, next) {
 	var body = req.body;
 
 	var newPatient = {
-		name: body.name,
-		birthday: body.birthday,
-		gender: body.gender,
-		phone: body.phone,
+		name: req.user.username,
+		gender: 'male',
+		phone: '01234567890',
 		pastMedication: body.pastMedication,
-		tags: body.tags,
+		tags: body.tags || '',
 		contacts: body.contacts || [{
 			address: 					"",
 			postalCode: 			"",
 			email: 						"",
 		}],
-		profilePicture: body.profilePicture,
-		plan: body.plan
 	}
 
 	Patient.create(newPatient, function(err, patient) {

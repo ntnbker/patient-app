@@ -30,7 +30,7 @@ exports.login = function(req, res, next) {
         return res.send(400, err);
       }
       var userInfo = user.userInfo();
-      res.send(200, userInfo);
+      res.status(200).send(userInfo);
 
     });
   })(req, res, next);

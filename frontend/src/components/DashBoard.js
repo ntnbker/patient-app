@@ -4,6 +4,7 @@ import Select from 'react-select'
 import {loadListPatient, findListPatient} from '../actions/patient'
 import {logout, getUserInfo} from '../actions/auth'
 import '../css/components/dashboard.css'
+import default_avatar from '../../public/avatar_default.jpg'
 class DashBoard extends Component {
 	constructor(props, context) {
 		super(props)
@@ -55,7 +56,8 @@ class DashBoard extends Component {
 		]
 		const {
 			listPatient,
-			userInfo
+			userInfo,
+			location
 		} = this.props
 		return (
 			<div className="app-container">
@@ -138,8 +140,7 @@ class DashBoard extends Component {
 							</div>
 							<div className="content-body">
 								{listPatient.map((item, idx) => {
-									let time = new Date()
-									time = time.toString()
+									let time = new Date(item.lastUpdatedTime);
 									console.log(time)
 									return (
 										<div 
@@ -150,7 +151,7 @@ class DashBoard extends Component {
 											<div className="col-xs-12">
 												<div className="row row-eq-height">
 													<div className="col-sm-2 col-xs-12">
-														<img src={item.pictureProfile} alt="avatar" className="person-avatar"/>
+														<img src={item.profilePicture || default_avatar} alt="avatar" className="person-avatar" height="100px" width="100px"/>
 													</div>
 													<div className="col-sm-6 col-xs-7">
 														<h4 className="person-name">
@@ -158,7 +159,7 @@ class DashBoard extends Component {
 															<span className="span-new-person">{item.status}</span>
 														</h4>
 														<p className="person-info">Cp full time</p>
-														<p className="person-update-time">Update Time: {time}</p>
+														<p className="person-update-time">Update Time: {time.toString()}</p>
 													</div>
 													<div className="col-sm-4 col-sx-5 person-location">
 														<i className="fa fa-map-marker"></i>
