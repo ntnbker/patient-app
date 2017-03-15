@@ -108,5 +108,6 @@
     ],
     "testEnvironment": "node",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$"
-  }
+  },
+  "homepage": "https://pta-client-app.herokuapp.com"
 }
