@@ -40,7 +40,7 @@
   },
   "devDependencies": {},
   "engines": {
-    "node": "4.4.3"
+    "node": "7.6.0"
   },
   "scripts": {
     "test": "grunt test",
