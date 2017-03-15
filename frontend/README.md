@@ -33,6 +33,6 @@ To compile for deployment, type:
 ```
 #!bash
 
-npm build
+npm run build
 ```
 
