@@ -1,6 +1,6 @@
 import 'whatwg-fetch'
 import cookie from 'react-cookie'
-const domain = 'https://pta-api.herokuapp.com/' && 'http://localhost:9000/'
+const domain = process.env.NODE_ENV === 'production' && 'https://pta-api.herokuapp.com/' || 'http://localhost:9000/'
 const pathLoginLocal = domain + 'auth/local'
 const pathLoginFacebook = domain + '/auth/facebook'
 const pathSignUp = domain + 'signup'

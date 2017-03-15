@@ -1,5 +1,5 @@
 import 'whatwg-fetch'
-const domain = 'https://pta-api.herokuapp.com/' && 'http://localhost:9000/'
+const domain = process.env.NODE_ENV === 'production' && 'https://pta-api.herokuapp.com/' || 'http://localhost:9000/'
 const getDetailPatientPath = domain + 'v1/patient/'
 const getListPatientPath = domain + 'v1/patients'
 const updateProfilePath = domain + 'v1/patient/'
