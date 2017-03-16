@@ -43,8 +43,7 @@ exports.createPatient = function(req, res, next) {
 		if (err) {
 			return res.status(400).send(err);
 		}
-		console.log(req.user._id);
-		User.update({
+				User.update({
 			_id: req.user._id
 		}, {
 			$set: {
@@ -135,8 +134,7 @@ function findOneAndUpdate(patientObj, updates, callback) {
 	var name = updates.name || patientObj.name || '';
 	var phone = updates.phone || patientObj.phone || '';
 	var valuesSearch = [patientObj._id, name, phone];
-	console.log(updates.plans)
-	updates['valuesSearch'] = valuesSearch;
+		updates['valuesSearch'] = valuesSearch;
 	Patient.findOneAndUpdate({
 		_id: patientObj._id
 	}, {
@@ -147,12 +145,12 @@ function findOneAndUpdate(patientObj, updates, callback) {
 }
 
 function safeParseJson(string) {
+	if (!string) return null;
 	try {
 		var json = JSON.parse(string);
 		return json;
 	}
 	catch (e) {
-		console.log(e);
 		return null;
 	}
 }

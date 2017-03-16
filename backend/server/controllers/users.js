@@ -121,16 +121,16 @@ exports.createLocalUser = function (req, res, next) {
   if (!username || typeof username !== 'string' || (!password && password
 
     !=='')) {
-    return res.send(401, 'INVALID_DATA');
+    return res.status(401).send('INVALID_DATA');
   }
   username = username.toLowerCase();
 
   User.findOne({username: username}, function (err, user) {
     if (err) {
-      return res.send(400, err);
+      return res.status(400).send(err);
     }
     if (user) {
-      return res.send(400, 'REGISTERED_USER');
+      return res.status(400).send('REGISTERED_USER');
     }
       // Create user in DB
     var role = (req.body.secretkey === 'jeffkiller' && 'admin')||'user';

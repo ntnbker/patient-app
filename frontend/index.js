@@ -11,10 +11,10 @@ const history = syncHistoryWithStore(browserHistory, store);
 const routes = createRoutes(store);
 console.log('test')
 ReactDOM.render(
-	<Provider store={store}>
-  	<Router history={browserHistory}>
-  		{routes}
-  	</Router>
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      {routes}
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

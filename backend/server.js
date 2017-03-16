@@ -27,14 +27,23 @@ switch (__config.serverMode) {
 }
 
 // Run server immediately to assist testing.
-if (process.env.NODE_ENV == 'test') server.start();
 
 // Connect to MongoDB.
 __mongodb.connect(__config.mongo.uri, __config.mongo.options, function(err) {
-    console.log("Mongoose connected", err);
-    // sqldb.connect(function(err, db) {
-    //     console.log("Postgres connected", err);
-        console.log('SERVER_TIME', new Date().toString());
-        if (process.env.NODE_ENV != 'test') server.start();
-    // })
+  console.log("Mongoose connected", err);
+  // sqldb.connect(function(err, db) {
+  //     console.log("Postgres connected", err);
+      console.log('SERVER_TIME', new Date().toString());
+      /*if (process.env.NODE_ENV != 'test') */
+      start();
+  // })
+  
 });
+
+function start() {
+  server.listen(__config.port, __config.ip, function () {
+    console.log('HTTP server listening on %s:%d, in %s mode', __config.ip, __config.port, server.get('env'));
+  });
+}
+
+module.exports = server;

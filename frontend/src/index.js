@@ -7,14 +7,14 @@ import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store/configureStore';
 const store = configureStore();
-const history = syncHistoryWithStore(browserHistory, store);
+syncHistoryWithStore(browserHistory, store);
 const routes = createRoutes(store);
 
 ReactDOM.render(
-	<Provider store={store}>
-  	<Router history={browserHistory}>
-  		{routes}
-  	</Router>
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      {routes}
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

@@ -19,7 +19,10 @@ I: Backend Quick Install
      $npm install
 
   3. Run server
-     $npm start
+      $npm start
+
+  4. Run unit test
+     $npm test
 
 
 II: Front-end Quick Install

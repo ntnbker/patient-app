@@ -15,74 +15,76 @@ const validate = values => {
 }
 
 class SignUp extends Component {
-	constructor(props) {
-		super(props)
-		this._handleClickSignUp = this._handleClickSignUp.bind(this)
-	}
+  constructor(props) {
+    super(props)
+    this._handleClickSignUp = this._handleClickSignUp.bind(this)
+  }
 
-	_handleClickSignUp(values) {
-		console.log('click auth', values)
-		// values.password = values.email
-		return this.props.signUp(values)
-	}
+  _handleClickSignUp(values) {
+    // console.log('click auth', values)
+    // values.password = values.email
+    this.props.signUp(values)
+  }
 
-	render() {
-		const { 
-			isSignUp, 
-			error, 
-			handleSubmit, 
-			pristine, 
-			reset, 
-			submitting, 
-			message,
-		} = this.props
-		let language = 'en'
-		return (
-			<div>
-				<form onSubmit={handleSubmit(this._handleClickSignUp)}>
-				  <Field className="form-control" name="username" type="text" component="input" placeholder={language === 'cn' ? '用户名' : "UserName"}/>
-				  <Field className="form-control" name="password" type="password" component="input" placeholder={language === 'cn' ? '用户名' : "Password"}/>
-		      {!isSignUp && message && <strong style={{margin: '0 15px'}}>{message}</strong>}	
-	      	<button
-	      		className="btn btnAuth bg-cyan"
-	      		type="submit"
-				disabled={pristine || submitting || isSignUp}
-			    >
-			    {language === 'cn' ?
-					'注册'
-					:
-					'Register'
-				}
-			    </button>
-			   </form>
-			</div>
-		)
-	}
+  _validateData(values) {
+    return values.password === values.rePassword
+  }
+
+  render() {
+    const { 
+      isSignUp, 
+      error, 
+      handleSubmit, 
+      pristine, 
+      reset, 
+      submitting, 
+      message,
+    } = this.props
+    let language = 'en'
+    return (
+      <div>
+        <form onSubmit={handleSubmit(this._handleClickSignUp)}>
+          <Field className="form-control" name="username" type="text" component="input" placeholder={language === 'cn' ? '用户名' : "UserName"}/>
+          <Field className="form-control" name="password" type="password" component="input" placeholder={language === 'cn' ? '用户名' : "Password"}/>
+          {!isSignUp && message && <strong style={{margin: '0 15px'}}>{message}</strong>}  
+          <button
+            className="btn btnAuth bg-cyan"
+            type="submit"
+        disabled={pristine || submitting || isSignUp}
+          >
+          {language === 'cn' ?
+          '注册'
+          :
+          'Register'
+        }
+          </button>
+         </form>
+      </div>
+    )
+  }
 }
 
 SignUp.PropTypes = {
-	isFetching: PropTypes.bool,
-	isSignUp: PropTypes.bool,
-	message: PropTypes.string,
-	userInfo: PropTypes.object
+  isFetching: PropTypes.bool,
+  isSignUp: PropTypes.bool,
+  message: PropTypes.string,
+  userInfo: PropTypes.object
 }
 
 function mapStateToProps(state) {
-	const {
-		signUp: { isFetching, isSignUp, message, userInfo }
-	} = state
+  const {
+    signUp: { isFetching, isSignUp, message, userInfo }
+  } = state
 
-	return {
-		isFetching,
-		isSignUp,
-		message,
-		userInfo
-	}
+  return {
+    isFetching,
+    isSignUp,
+    message,
+    userInfo
+  }
 }
 
-SignUp = connect(mapStateToProps, {signUp})(SignUp)
-SignUp = reduxForm({
-	form: 'signup',
-	validate
-})(SignUp)
-export default SignUp
+export default reduxForm({
+  form: 'signup',
+  validate
+})(connect(mapStateToProps, {signUp})(SignUp))

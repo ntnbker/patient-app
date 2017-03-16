@@ -1,3 +1,32 @@
 {
-  "extends": "react-app"
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "plugins": [
+      "react",
+      "standard",
+      "promise"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "globals": {"Promise": true},
+  "rules": {
+    "strict": 0,
+    "semi": 0,
+    "comma-dangle": 0,
+    "no-multiple-empty-lines": 0,
+    "space-before-function-paren": 0,
+    "operator-linebreak": 0,
+    "quotes": 0,
+    "no-console": 0,
+    "no-unused-vars": 0,
+    "react/display-name": 0,
+    "react/prop-types": 0
+  }
 }

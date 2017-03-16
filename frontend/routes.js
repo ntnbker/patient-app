@@ -1,10 +1,9 @@
-import React from 'react';
-import { getUserInfo } from './actions/auth'
+import React from 'react'
 import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import Login from './components/auth/Login'
 
-export default (store) => {
+export default () => {
 
   /*const redirectId = (nextState, replace, callback) => {
     const { practice: { isFetching, status }} = store.getState();

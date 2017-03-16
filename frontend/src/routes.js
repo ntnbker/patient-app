@@ -1,5 +1,4 @@
 import React from 'react';
-import { getUserInfo } from './actions/auth'
 import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import Login from './components/auth/Login'

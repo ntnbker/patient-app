@@ -21,20 +21,20 @@ module.exports = {
   userAuth: function(req, res, next) {
     // return next();
     if (req.user) return next();
-    res.send(401);
+    res.status(401);
   },
 
   editorAuth: function(req, res, next) {
     if (req.isAuthenticated() &&
       (req.user.role === 'editor' || req.user.role === 'admin')) return next();
 
-    res.send(401);
+    res.status(401);
   },
 
   adminAuth: function(req, res, next) {
 
     if (req.isAuthenticated() && req.user.role === 'admin') return next();
-    res.send(401);
+    res.status(401);
   },
 
   editorRestrictCheck: function(req, res, next) {
